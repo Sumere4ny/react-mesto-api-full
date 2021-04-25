@@ -1,13 +1,13 @@
 const cors = require('cors');
 
-const whiteList = ['http://sumere4ny.students.nomoredomains.icu', 'https://sumere4ny.students.nomoredomains.icu'];
+const whiteList = ['http://sumere4ny.students.nomoredomains.icu', 'https://sumere4ny.students.nomoredomains.icu', 'http://localhost:3000'];
 
 const corsOptions = {
   origin(origin, callback) {
-    if (whiteList.indexOf(origin) !== -1) {
+    if (whiteList.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
-      callback(new Error('not allowd by CORS'));
+      callback(null, false);
     }
   },
   methods: ['GET', 'PUT', 'PATCH', 'DELETE', 'POST'],
